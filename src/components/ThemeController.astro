@@ -18,72 +18,82 @@
     document.addEventListener('DOMContentLoaded', () => {
         const themes = {
             'pizarra-indigo': {
-                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', footer: 'text-slate-500', accent: 'text-indigo-400', tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300', hover: 'hover:text-indigo-400'
+                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-indigo-400', hover: 'hover:text-indigo-400',
+                cta: 'bg-indigo-600 text-white', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
+                pill: 'text-white', tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300'
             },
             'pizarra-verde': {
-                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', footer: 'text-slate-500', accent: 'text-emerald-400', tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300', hover: 'hover:text-emerald-400'
+                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-emerald-400', hover: 'hover:text-emerald-400',
+                cta: 'bg-emerald-600 text-white', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
+                pill: 'text-white', tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300'
             },
             'claro-negro': {
-                bg: 'bg-gray-100', card: 'bg-white', text: 'text-slate-900', subtext: 'text-slate-600', footer: 'text-slate-500', accent: 'text-slate-900', tagBg: 'bg-gray-200', tagText: 'text-gray-800', hover: 'hover:text-slate-600'
+                bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600', accent: 'text-slate-900', hover: 'hover:text-slate-600',
+                cta: 'bg-slate-900 text-white', ctaSecondary: 'bg-slate-200 text-slate-800 hover:bg-slate-300',
+                pill: 'text-slate-800', tagBg: 'bg-gray-200', tagText: 'text-gray-800'
             },
             'pizarra-mono': {
-                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', footer: 'text-slate-500', accent: 'text-slate-300', tagBg: 'bg-slate-700/50', tagText: 'text-slate-300', hover: 'hover:text-white'
+                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-slate-300', hover: 'hover:text-white',
+                cta: 'bg-slate-300 text-slate-900', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
+                pill: 'text-white', tagBg: 'bg-slate-700/50', tagText: 'text-slate-300'
             }
-        };
-
-        const elements = {
-            body: document.body,
-            mainHeader: document.getElementById('main-header'),
-            allTitles: document.querySelectorAll('.main-title, .section-title, .item-title'),
-            allLinks: document.querySelectorAll('.nav-link, .header-name, .social-icon'),
-            subTexts: document.querySelectorAll('.hero-text, .experience-description, .experience-company, .card-description'),
-            heroSubtitle: document.querySelector('.hero-subtitle'),
-            projectTags: document.querySelectorAll('.project-tag'),
-            dateTags: document.querySelectorAll('.experience-date'),
-            cardIcons: document.querySelectorAll('.card-icon'),
-            cardBorders: document.querySelectorAll('.card-border'),
-            projectCards: document.querySelectorAll('.card-background'),
-            themeIcon: document.getElementById('theme-icon'),
-            themeToggleButton: document.getElementById('theme-toggle-button'),
-            footer: document.querySelector('.footer')
         };
 
         function applyTheme(themeKey) {
             if (!themes[themeKey]) themeKey = 'pizarra-indigo';
             const theme = themes[themeKey];
-            
+            const elements = {
+                body: document.body,
+                mainHeader: document.getElementById('main-header'),
+                allTitles: document.querySelectorAll('.main-title, .section-title, .item-title, .header-name, .nav-link'),
+                subTexts: document.querySelectorAll('.hero-text, .experience-description, .experience-company, .card-description, .footer'),
+                heroSubtitle: document.querySelector('.hero-subtitle'),
+                projectTags: document.querySelectorAll('.project-tag'),
+                dateTags: document.querySelectorAll('.experience-date'),
+                socialPills: document.querySelectorAll('.social-pill'),
+                ctaButton: document.querySelector('.cta-button'),
+                secondaryCtaButton: document.querySelector('.secondary-cta-button'),
+                themeIcon: document.getElementById('theme-icon'),
+                themeToggleButton: document.getElementById('theme-toggle-button')
+            };
+
             Object.values(themes).forEach(t => {
                 elements.body.classList.remove(t.bg);
-                if (elements.mainHeader) elements.mainHeader.classList.remove(t.card.split('/')[0], 'border-b', 'border-gray-200');
-                elements.projectCards.forEach(el => el.classList.remove(t.card.split('/')[0]));
                 elements.allTitles.forEach(el => el.classList.remove(t.text));
-                elements.allLinks.forEach(el => { el.classList.remove(t.text); el.classList.remove(t.hover); });
                 elements.subTexts.forEach(el => el.classList.remove(t.subtext));
                 if (elements.heroSubtitle) elements.heroSubtitle.classList.remove(t.accent);
                 elements.projectTags.forEach(el => el.classList.remove(t.tagBg, t.tagText));
                 elements.dateTags.forEach(el => el.classList.remove(t.tagBg, t.tagText));
-                elements.cardIcons.forEach(el => el.classList.remove(t.subtext));
-                elements.cardBorders.forEach(el => el.classList.remove(t.cardBorder));
-                if (elements.footer) elements.footer.classList.remove(t.footer);
+                if (elements.ctaButton) {
+                    const ctaClasses = t.cta.split(' ');
+                    elements.ctaButton.classList.remove(...ctaClasses);
+                }
+                 if (elements.secondaryCtaButton) {
+                    const secondaryCtaClasses = t.ctaSecondary.split(' ');
+                    elements.secondaryCtaButton.classList.remove(...secondaryCtaClasses);
+                }
+                elements.socialPills.forEach(el => el.classList.remove(t.pill));
             });
 
             elements.body.classList.add(theme.bg);
-            if (elements.mainHeader) elements.mainHeader.classList.add(theme.card.split('/')[0]);
-            elements.projectCards.forEach(el => el.classList.add(theme.card.split('/')[0]));
             elements.allTitles.forEach(el => el.classList.add(theme.text));
-            elements.allLinks.forEach(el => el.classList.add(theme.text, theme.hover));
             elements.subTexts.forEach(el => el.classList.add(theme.subtext));
             if (elements.heroSubtitle) elements.heroSubtitle.classList.add(theme.accent);
             elements.projectTags.forEach(el => el.classList.add(theme.tagBg, theme.tagText));
             elements.dateTags.forEach(el => el.classList.add(theme.tagBg, theme.tagText));
-            elements.cardIcons.forEach(el => el.classList.add(theme.subtext));
-            elements.cardBorders.forEach(el => el.classList.add(theme.cardBorder));
-            if (elements.footer) elements.footer.classList.add(theme.footer);
+            if (elements.ctaButton) {
+                const ctaClasses = theme.cta.split(' ');
+                elements.ctaButton.classList.add(...ctaClasses);
+            }
+            if (elements.secondaryCtaButton) {
+                const secondaryCtaClasses = theme.ctaSecondary.split(' ');
+                elements.secondaryCtaButton.classList.add(...secondaryCtaClasses);
+            }
+            elements.socialPills.forEach(el => el.classList.add(theme.pill));
             
             if (themeKey === 'claro-negro') {
                 if(elements.themeToggleButton) elements.themeToggleButton.classList.add('bg-white');
                 if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'black');
-                if(elements.mainHeader) elements.mainHeader.classList.add('border-b', 'border-gray-200');
             } else {
                  if(elements.themeToggleButton) elements.themeToggleButton.classList.remove('bg-white');
                  if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'white');
