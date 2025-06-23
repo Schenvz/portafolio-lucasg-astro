@@ -1,107 +1,163 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro'; // <-- Importamos el nuevo componente Hero
-import ProjectCard from '../components/ProjectCard.astro';
-import ExperienceItem from '../components/ExperienceItem.astro';
-import SkillBadge from '../components/SkillBadge.astro';
-import Html5Icon from '../components/icons/Html5.astro';
-import Css3Icon from '../components/icons/Css3.astro';
-import JavaScriptIcon from '../components/icons/JavaScript.astro';
-import ReactIcon from '../components/icons/React.astro';
-import NodejsIcon from '../components/icons/Nodejs.astro';
-import VercelIcon from '../components/icons/Vercel.astro';
-import BootstrapIcon from '../components/icons/Bootstrap.astro';
-import SassIcon from '../components/icons/Sass.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import VisualStudioCodeIcon from '../components/icons/VisualStudioCode.astro';
-import PhotoshopIcon from '../components/icons/Photoshop.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import SkillBadge from "../components/SkillBadge.astro";
+import Html5Icon from "../components/icons/Html5.astro";
+import Css3Icon from "../components/icons/Css3.astro";
+import JavaScriptIcon from "../components/icons/JavaScript.astro";
+import ReactIcon from "../components/icons/React.astro";
+import NodejsIcon from "../components/icons/Nodejs.astro";
+import VercelIcon from "../components/icons/Vercel.astro";
+import BootstrapIcon from "../components/icons/Bootstrap.astro";
+import SassIcon from "../components/icons/Sass.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import VisualStudioCodeIcon from "../components/icons/VisualStudioCode.astro";
+import PhotoshopIcon from "../components/icons/Photoshop.astro";
+import BotonCvDropdown from "../components/BotonCvDropdown.astro";
 ---
+
 <Layout>
-	<div class="max-w-4xl mx-auto px-4">
-		
-		<!-- Nueva sección principal -->
-		<Hero />
+  <div class="max-w-4xl mx-auto px-4">
+    <Hero />
 
-		<div class="space-y-28 py-24 md:py-32">
-			<section id="experiencia">
-				<h2 class="section-title text-3xl font-bold mb-10 text-center">Experiencia Profesional</h2>
-				<div class="max-w-3xl mx-auto">
-					<ExperienceItem
-						date="2022 - 2023"
-						title="Desarrollador Frontend"
-						company="Creative Minds">
-						<ul class="list-disc pl-5 space-y-2">
-							<li>Lideré la maquetación de interfaces de usuario desde diseños en Figma, asegurando una fidelidad visual del 100% y una experiencia de usuario fluida.</li>
-							<li>Implementé optimizaciones de rendimiento web (WPO) que resultaron en una reducción del 30% en los tiempos de carga (LCP).</li>
-							<li>Colaboré estrechamente con el equipo de backend para integrar APIs REST, asegurando un flujo de datos eficiente y consistente.</li>
-						</ul>
-					</ExperienceItem>
-					<ExperienceItem
-						date="2023 - Actualidad"
-						title="Desarrollador Full Stack"
-						company="Tech Solutions Inc.">
-						<ul class="list-disc pl-5 space-y-2">
-							<li>Diseño y desarrollo de la arquitectura completa de aplicaciones web, desde la base de datos hasta el despliegue en producción.</li>
-							<li>Mantenimiento de sistemas backend robustos con Node.js, gestionando la lógica de negocio y la seguridad de los datos.</li>
-							<li>Participación activa en el ciclo de vida completo del desarrollo bajo metodologías ágiles (Scrum), contribuyendo en ceremonias de planificación, revisión y retrospectiva.</li>
-						</ul>
-					</ExperienceItem>
-				</div>
-			</section>
+    <div class="space-y-28 py-24 md:py-32">
+      <section id="experiencia">
+        <h2 class="section-title text-3xl font-bold mb-10 text-center">
+          Experiencia Profesional
+        </h2>
+        <div class="max-w-3xl mx-auto">
+          <ExperienceItem
+            date="2022 - 2023"
+            title="Desarrollador Frontend"
+            company="Creative Minds"
+          >
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                Lideré la maquetación de interfaces de usuario desde diseños en
+                Figma, asegurando una fidelidad visual del 100% y una
+                experiencia de usuario fluida.
+              </li>
+              <li>
+                Implementé optimizaciones de rendimiento web (WPO) que
+                resultaron en una reducción del 30% en los tiempos de carga
+                (LCP).
+              </li>
+              <li>
+                Colaboré estrechamente con el equipo de backend para integrar
+                APIs REST, asegurando un flujo de datos eficiente y consistente.
+              </li>
+            </ul>
+          </ExperienceItem>
+          <ExperienceItem
+            date="2023 - Actualidad"
+            title="Desarrollador Full Stack"
+            company="Tech Solutions Inc."
+          >
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                Diseño y desarrollo de la arquitectura completa de aplicaciones
+                web, desde la base de datos hasta el despliegue en producción.
+              </li>
+              <li>
+                Mantenimiento de sistemas backend robustos con Node.js,
+                gestionando la lógica de negocio y la seguridad de los datos.
+              </li>
+              <li>
+                Participación activa en el ciclo de vida completo del desarrollo
+                bajo metodologías ágiles (Scrum), contribuyendo en ceremonias de
+                planificación, revisión y retrospectiva.
+              </li>
+            </ul>
+          </ExperienceItem>
+        </div>
+      </section>
 
-			<section id="habilidades">
-				<h2 class="section-title text-3xl font-bold mb-10 text-center">Habilidades Técnicas</h2>
-				<div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-					<SkillBadge name="HTML5" colorClass="text-orange-500"><Html5Icon /></SkillBadge>
-					<SkillBadge name="CSS3" colorClass="text-blue-500"><Css3Icon /></SkillBadge>
-					<SkillBadge name="JavaScript" colorClass="text-yellow-400"><JavaScriptIcon /></SkillBadge>
-					<SkillBadge name="React" colorClass="text-sky-400"><ReactIcon /></SkillBadge>
-					<SkillBadge name="Node.js" colorClass="text-green-500"><NodejsIcon /></SkillBadge>
-					<SkillBadge name="Vercel" colorClass="text-white"><VercelIcon /></SkillBadge>
-					<SkillBadge name="Bootstrap" colorClass="text-purple-600"><BootstrapIcon /></SkillBadge>
-					<SkillBadge name="Sass" colorClass="text-pink-500"><SassIcon /></SkillBadge>
-					<SkillBadge name="GitHub" colorClass="text-white"><GitHubIcon /></SkillBadge>
-					<SkillBadge name="VS Code" colorClass="text-blue-500"><VisualStudioCodeIcon /></SkillBadge>
-					<SkillBadge name="Photoshop" colorClass="text-blue-800"><PhotoshopIcon /></SkillBadge>
-				</div>
-			</section>
+      <section id="habilidades">
+        <h2 class="section-title text-3xl font-bold mb-10 text-center">
+          Habilidades Técnicas
+        </h2>
+        <div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+          <SkillBadge name="HTML5" colorClass="text-orange-500">
+            <Html5Icon />
+          </SkillBadge>
+          <SkillBadge name="CSS3" colorClass="text-blue-500">
+            <Css3Icon />
+          </SkillBadge>
+          <SkillBadge name="JavaScript" colorClass="text-yellow-400">
+            <JavaScriptIcon />
+          </SkillBadge>
+          <SkillBadge name="React" colorClass="text-sky-400">
+            <ReactIcon />
+          </SkillBadge>
+          <SkillBadge name="Node.js" colorClass="text-green-500">
+            <NodejsIcon />
+          </SkillBadge>
+          <SkillBadge name="Vercel" colorClass="text-white">
+            <VercelIcon />
+          </SkillBadge>
+          <SkillBadge name="Bootstrap" colorClass="text-purple-600">
+            <BootstrapIcon />
+          </SkillBadge>
+          <SkillBadge name="Sass" colorClass="text-pink-500">
+            <SassIcon />
+          </SkillBadge>
+          <SkillBadge name="GitHub" colorClass="text-white">
+            <GitHubIcon />
+          </SkillBadge>
+          <SkillBadge name="VS Code" colorClass="text-blue-500">
+            <VisualStudioCodeIcon />
+          </SkillBadge>
+          <SkillBadge name="Photoshop" colorClass="text-blue-800">
+            <PhotoshopIcon />
+          </SkillBadge>
+        </div>
+      </section>
 
-			<section id="proyectos">
-				<h2 class="section-title text-3xl font-bold mb-10 text-center">Proyectos Destacados</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<ProjectCard 
-						title="Gestor de Tareas Interactivo"
-						description="Plataforma web para la gestión de proyectos y tareas personales. Permite a los usuarios crear, organizar y dar seguimiento a sus actividades diarias a través de una interfaz limpia y reactiva."
-						tags={['React', 'Firebase', 'Vite', 'Testing Library']}
-						imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=App+de+Tareas"
-						imgAlt="Imagen de la aplicación de gestión de tareas"
-						githubHref="https://github.com/schenvz"
-						liveHref="https://github.com/schenvz"
-					/>
-					<ProjectCard
-						title="Portafolio Personal v2"
-						description="El sitio que estás viendo ahora. Diseñado para ser un reflejo de mis habilidades, centrado en el rendimiento y la estética, utilizando las últimas tecnologías del desarrollo web estático."
-						tags={['Astro', 'Tailwind CSS', 'UI/UX']}
-						imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=Mi+Portafolio"
-						imgAlt="Imagen del proyecto de portafolio personal"
-						githubHref="https://github.com/schenvz"
-						liveHref="#"
-					/>
-				</div>
-			</section>
-			
-			<!-- Nueva sección de contacto -->
-			<section id="contacto">
-				<h2 class="section-title text-3xl font-bold mb-10 text-center">Hablemos</h2>
-				<p class="hero-text text-center max-w-xl mx-auto">
-					Estoy disponible para nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres conectar, no dudes en escribirme.
-				</p>
-				<div class="flex justify-center mt-8">
-					<a href="mailto:lucasgori123@gmail.com" class="cta-button font-semibold rounded-full px-6 py-3 transition-transform duration-300 hover:scale-105">
-						Enviar un email
-					</a>
-				</div>
-			</section>
-		</div>
-	</div>
+      <section id="proyectos">
+        <h2 class="section-title text-3xl font-bold mb-10 text-center">
+          Proyectos Destacados
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectCard
+            title="Gestor de Tareas Interactivo"
+            description="Plataforma web para la gestión de proyectos y tareas personales. Permite a los usuarios crear, organizar y dar seguimiento a sus actividades diarias a través de una interfaz limpia y reactiva."
+            tags={["React", "Firebase", "Vite", "Testing Library"]}
+            imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=App+de+Tareas"
+            imgAlt="Imagen de la aplicación de gestión de tareas"
+            githubHref="https://github.com/schenvz"
+            liveHref="https://github.com/schenvz"
+          />
+          <ProjectCard
+            title="Portafolio Personal v2"
+            description="El sitio que estás viendo ahora. Diseñado para ser un reflejo de mis habilidades, centrado en el rendimiento y la estética, utilizando las últimas tecnologías del desarrollo web estático."
+            tags={["Astro", "Tailwind CSS", "UI/UX"]}
+            imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=Mi+Portafolio"
+            imgAlt="Imagen del proyecto de portafolio personal"
+            githubHref="https://github.com/schenvz"
+            liveHref="#"
+          />
+        </div>
+      </section>
+
+      <section id="contacto" class="text-center py-20">
+        <h2 class="section-title text-3xl font-bold mb-4">Hablemos</h2>
+        <p class="text-lg max-w-xl mx-auto mb-8">
+          Estoy disponible para nuevas oportunidades y colaboraciones. Si tienes
+          un proyecto en mente o simplemente quieres conectar, no dudes en
+          contactarme.
+        </p>
+        <div class="flex flex-wrap justify-center items-center gap-4">
+          <a
+            href="mailto:lucasgori123@gmail.com"
+            class="bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-full px-6 py-3 transition-transform duration-300 hover:scale-105"
+          >
+            Enviar un email
+          </a>
+          <BotonCvDropdown />
+        </div>
+      </section>
+    </div>
+  </div>
 </Layout>

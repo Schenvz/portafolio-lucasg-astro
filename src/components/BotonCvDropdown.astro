@@ -1,0 +1,77 @@
+---
+// src/components/BotonCvDropdown.astro
+---
+
+<div class="relative inline-block text-left">
+  {/* El botón principal que abre el menú */}
+  <button
+    id="cv-button"
+    type="button"
+    class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-full inline-flex items-center transition-colors duration-300"
+  >
+    <span>Descargar CV</span>
+    {/* Icono de flecha hacia abajo */}
+    <svg
+      class="fill-current h-4 w-4 ml-2"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      ><path
+        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+      ></path></svg
+    >
+  </button>
+
+  {/* El menú desplegable (inicialmente oculto) */}
+  <div
+    id="cv-menu"
+    class="hidden absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20"
+  >
+    <div
+      class="py-1"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="cv-button"
+    >
+      <a
+        href="/CV-Lucas-Gorini-ES.pdf"
+        download="CV-Lucas-Gorini-ES.pdf"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+        role="menuitem"
+      >
+        Español (.pdf)
+      </a>
+      <a
+        href="/CV-Lucas-Gorini-EN.pdf"
+        download="CV-Lucas-Gorini-EN.pdf"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+        role="menuitem"
+      >
+        English (.pdf)
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // El script con la corrección aplicada
+  const cvButton = document.getElementById("cv-button");
+  const cvMenu = document.getElementById("cv-menu");
+
+  // AÑADIMOS ESTA VERIFICACIÓN para eliminar los errores de "posiblemente nulo"
+  if (cvButton && cvMenu) {
+    // La lógica original ahora va segura dentro de este bloque
+
+    // Función para mostrar/ocultar el menú
+    cvButton.addEventListener("click", (event) => {
+      event.stopPropagation(); // Evita que el clic se propague al documento
+      cvMenu.classList.toggle("hidden");
+    });
+
+    // Cierra el menú si se hace clic fuera de él
+    document.addEventListener("click", () => {
+      if (!cvMenu.classList.contains("hidden")) {
+        cvMenu.classList.add("hidden");
+      }
+    });
+  }
+</script>

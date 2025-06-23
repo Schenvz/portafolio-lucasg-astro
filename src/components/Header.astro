@@ -2,19 +2,33 @@
 // El código JavaScript va entre los dos delimitadores.
 const navLinks = [
   { href: "#experiencia", text: "Experiencia" },
+  { href: "#habilidades", text: "Habilidades" }, // <-- AÑADIMOS ESTA LÍNEA
   { href: "#proyectos", text: "Proyectos" },
   { href: "#contacto", text: "Contacto" },
 ];
 ---
+
 {/* El HTML del componente va después del segundo delimitador. */}
-<header id="main-header" class="fixed top-0 z-50 w-full flex justify-center items-center py-4 px-6 backdrop-blur-sm transition-colors duration-300">
-    <nav class="flex justify-between items-center w-full max-w-5xl">
-        <a href="/" class="header-name text-lg font-bold transition-colors">Lucas Gorini</a>
-        
-        <div class="hidden md:flex items-center gap-6">
-            {navLinks.map(link => (
-                <a href={link.href} class="nav-link transition-colors">{link.text}</a>
-            ))}
-        </div>
-    </nav>
+<header
+  id="main-header"
+  class="fixed top-0 z-50 w-full flex justify-center items-center py-4 px-6 backdrop-blur-sm transition-colors duration-300"
+>
+  <nav class="flex justify-between items-center w-full max-w-5xl">
+    <a href="/" class="header-name text-lg font-bold transition-colors"
+      >Lucas Gorini</a
+    >
+
+    <div class="hidden md:flex items-center gap-6">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link transition-transform duration-300 hover:scale-110"
+          >
+            {link.text}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
 </header>
