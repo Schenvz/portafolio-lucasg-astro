@@ -1,15 +1,18 @@
 ---
-import SocialPill from '../components/SocialPill.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import LinkedInIcon from '../components/icons/LinkedIn.astro';
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
 ---
+
 <section class="w-full lg:w-[740px] mx-auto py-20 md:py-36">
-  <div class="grid md:grid-cols-[1fr,2fr] gap-8 items-center">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
     <!-- Columna Izquierda: Avatar y Redes -->
-    <div class="flex flex-col items-center text-center">
-      <img 
-        class="rounded-full w-32 h-32 mb-4" 
-        src="https://placehold.co/128x128/a3a3a3/333?text=LG" 
+    <div
+      class="flex flex-col items-center text-center"
+    >
+      <img
+        class="rounded-full w-32 h-32 mb-4"
+        src="https://placehold.co/128x128/a3a3a3/333?text=LG"
         alt="Avatar de Lucas Gorini"
       />
       <div class="flex gap-4 mt-4">
@@ -24,23 +27,37 @@ import LinkedInIcon from '../components/icons/LinkedIn.astro';
       </div>
     </div>
     <!-- Columna Derecha: Texto y Botones -->
-    <div class="flex flex-col items-center md:items-start text-center md:text-left">
-      <h1 class="main-title text-4xl md:text-5xl font-bold">
-        Lucas Gorini
-      </h1>
-      <p class="hero-subtitle text-xl font-semibold mt-2 transition-colors duration-300">
+    <div
+      class="flex flex-col items-center md:items-start text-center md:text-left"
+    >
+      <h1 class="main-title text-4xl md:text-5xl font-bold">Lucas Gorini</h1>
+      <p
+        class="hero-subtitle text-xl font-semibold mt-2 transition-colors duration-300"
+      >
         Desarrollador Web Full Stack
       </p>
       <p class="hero-text mt-4 transition-colors duration-300">
-        Convierto ideas en soluciones digitales robustas y escalables. Me especializo en el ecosistema de JavaScript.
+        Transformo ideas en productos digitales de alto impacto. Me especializo
+        en el ecosistema JavaScript, creando soluciones eficientes, escalables y
+        centradas en la experiencia del usuario.
       </p>
-      <div class="flex flex-wrap gap-4 mt-8">
-        <a href="#contacto" class="cta-button font-semibold rounded-full px-5 py-2.5 transition-transform duration-300 hover:scale-105">
+      <p class="hero-text mt-4 transition-colors duration-300">
+        Con más de tres años de experiencia en desarrollo web y cinco en
+        administración de bases de datos, combino lógica, diseño y performance
+        para construir aplicaciones sólidas, modernas y fáciles de mantener.
+      </p>
+      <p class="hero-text mt-4 transition-colors duration-300">
+        Trabajo con tecnologías como React, Node.js, Express, MongoDB, Astro,
+        entre otras. Siempre busco superarme, aprender algo nuevo y sumar
+        valor real en cada proyecto. Si tenés una idea, una necesidad o
+        simplemente querés charlar de tech, estoy a un clic de distancia.
+      </p>
+      <div class="flex flex-col items-center text-center mt-8 col-span-2">
+        <a
+          href="#contacto"
+          class="cta-button font-semibold rounded-full px-5 py-2.5 transition-transform duration-300 hover:scale-105"
+        >
           Contactarme
-        </a>
-        <!-- NOTA: Reemplaza '/cv.pdf' con la ruta real a tu CV en la carpeta 'public' -->
-        <a href="/cv.pdf" download class="secondary-cta-button font-semibold rounded-full px-5 py-2.5 transition-transform duration-300 hover:scale-105">
-          Descargar CV
         </a>
       </div>
     </div>

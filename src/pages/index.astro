@@ -151,11 +151,14 @@ import BotonCvDropdown from "../components/BotonCvDropdown.astro";
         <div class="flex flex-wrap justify-center items-center gap-4">
           <a
             href="mailto:lucasgori123@gmail.com"
-            class="bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-full px-6 py-3 transition-transform duration-300 hover:scale-105"
+            class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-full inline-flex items-center transition-colors duration-300"
           >
             Enviar un email
           </a>
-          <BotonCvDropdown />
+          <BotonCvDropdown
+            cvEs="./cv-es.pdf"
+            cvEn="/cv-en.pdf"
+          />
         </div>
       </section>
     </div>
