@@ -1,11 +1,21 @@
 ---
 export interface Props {
     name: string;
+    colorClass?: string; // Prop opcional para la clase de color de Tailwind
 }
+const { name, colorClass = 'text-slate-300' } = Astro.props;
 ---
-<div class="flex items-center gap-3 bg-slate-800/50 p-3 rounded-lg">
-    <div class="w-7 h-7">
-        <slot /> <!-- Aquí se insertará el SVG del icono -->
+<!--
+  CLASES NUEVAS:
+  - hover:-translate-y-1: Mueve el badge 1 píxel hacia arriba en hover.
+  - hover:scale-105: Aumenta el tamaño del badge un 5% en hover.
+  - transition-all: Aplica una transición suave a todos los cambios.
+  - duration-300: La animación dura 300 milisegundos.
+  - ease-in-out: Curva de aceleración suave para la animación.
+-->
+<div class="flex flex-col items-center justify-center gap-2 bg-slate-800/50 p-4 rounded-lg text-center hover:bg-slate-700/50 hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-in-out">
+    <div class={`w-10 h-10 ${colorClass}`}>
+        <slot />
     </div>
-    <span class="font-medium text-slate-300">{Astro.props.name}</span>
+    <span class="font-semibold text-sm text-slate-300">{name}</span>
 </div>

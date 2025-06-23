@@ -5,14 +5,21 @@ import ExperienceItem from '../components/ExperienceItem.astro';
 import SkillBadge from '../components/SkillBadge.astro';
 
 // Importando los iconos como componentes de Astro
+import BootstrapIcon from '../components/icons/Bootstrap.astro';
+import CanvaIcon from '../components/icons/Canva.astro';
+import Css3Icon from '../components/icons/Css3.astro';
+import GitHubIcon from '../components/icons/GitHub.astro';
+import GoogleIcon from '../components/icons/Google.astro';
+import Html5Icon from '../components/icons/Html5.astro';
 import JavaScriptIcon from '../components/icons/JavaScript.astro';
-import TypeScriptIcon from '../components/icons/TypeScript.astro';
+import LinkedInIcon from '../components/icons/LinkedIn.astro';
+import OperaIcon from '../components/icons/Opera.astro';
+import PhotoshopIcon from '../components/icons/Photoshop.astro';
 import ReactIcon from '../components/icons/React.astro';
-import NodeIcon from '../components/icons/Node.astro';
-import AstroIcon from '../components/icons/Astro.astro';
-import TailwindIcon from '../components/icons/Tailwind.astro';
-import GitIcon from '../components/icons/Git.astro';
-import FigmaIcon from '../components/icons/Figma.astro';
+import SassIcon from '../components/icons/Sass.astro';
+import VisualStudioCodeIcon from '../components/icons/VisualStudioCode.astro';
+import NodejsIcon from '../components/icons/Nodejs.astro';
+import VercelIcon from '../components/icons/Vercel.astro';
 ---
 <Layout 
 	title="Lucas Gorini | Desarrollador Web Full Stack"
@@ -55,15 +62,24 @@ import FigmaIcon from '../components/icons/Figma.astro';
 		<!-- Habilidades (Skills) -->
 		<section id="habilidades">
 			<h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
-			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-				<SkillBadge name="JavaScript"><JavaScriptIcon /></SkillBadge>
-				<SkillBadge name="TypeScript"><TypeScriptIcon /></SkillBadge>
-				<SkillBadge name="React.js"><ReactIcon /></SkillBadge>
-				<SkillBadge name="Node.js"><NodeIcon /></SkillBadge>
-				<SkillBadge name="Astro"><AstroIcon /></SkillBadge>
-				<SkillBadge name="Tailwind CSS"><TailwindIcon /></SkillBadge>
-				<SkillBadge name="Git"><GitIcon /></SkillBadge>
-				<SkillBadge name="Figma"><FigmaIcon /></SkillBadge>
+			<!-- 
+        CLASES NUEVAS:
+        - Hemos reemplazado 'grid' y 'grid-cols-*' por 'flex', 'flex-wrap' y 'justify-center'.
+        - flex-wrap: Permite que los elementos pasen a la siguiente línea.
+        - justify-center: Centra todos los elementos horizontalmente, incluyendo la última fila.
+      -->
+			<div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+				<SkillBadge name="HTML5" colorClass="text-orange-500"><Html5Icon /></SkillBadge>
+				<SkillBadge name="CSS3" colorClass="text-blue-500"><Css3Icon /></SkillBadge>
+				<SkillBadge name="JavaScript" colorClass="text-yellow-400"><JavaScriptIcon /></SkillBadge>
+				<SkillBadge name="React" colorClass="text-sky-400"><ReactIcon /></SkillBadge>
+				<SkillBadge name="Node.js" colorClass="text-green-500"><NodejsIcon /></SkillBadge>
+				<SkillBadge name="Vercel" colorClass="text-white"><VercelIcon /></SkillBadge>
+				<SkillBadge name="Bootstrap" colorClass="text-purple-600"><BootstrapIcon /></SkillBadge>
+				<SkillBadge name="Sass" colorClass="text-pink-500"><SassIcon /></SkillBadge>
+				<SkillBadge name="GitHub" colorClass="text-white"><GitHubIcon /></SkillBadge>
+				<SkillBadge name="VS Code" colorClass="text-blue-500"><VisualStudioCodeIcon /></SkillBadge>
+				<SkillBadge name="Photoshop" colorClass="text-blue-800"><PhotoshopIcon /></SkillBadge>
 			</div>
 		</section>
 
@@ -91,6 +107,5 @@ import FigmaIcon from '../components/icons/Figma.astro';
 				/>
 			</div>
 		</section>
-
 	</div>
 </Layout>
