@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import ThemeController from '../components/ThemeController.astro';
 
 export interface Props {
 	title: string;
@@ -20,7 +21,7 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class="bg-slate-900 text-slate-300 font-sans leading-relaxed">
+	<body class="font-sans leading-relaxed transition-colors duration-300">
 		<Header />
 		<main class="relative z-10">
 			<slot />
@@ -28,5 +29,6 @@ const {
 		<footer class="text-center py-8 text-sm text-slate-500">
 			© {new Date().getFullYear()} Lucas Gorini. Todos los derechos reservados.
 		</footer>
+    <ThemeController />
 	</body>
 </html>

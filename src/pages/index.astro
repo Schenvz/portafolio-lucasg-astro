@@ -3,23 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ExperienceItem from '../components/ExperienceItem.astro';
 import SkillBadge from '../components/SkillBadge.astro';
-
-// Importando los iconos como componentes de Astro
-import BootstrapIcon from '../components/icons/Bootstrap.astro';
-import CanvaIcon from '../components/icons/Canva.astro';
-import Css3Icon from '../components/icons/Css3.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import GoogleIcon from '../components/icons/Google.astro';
 import Html5Icon from '../components/icons/Html5.astro';
+import Css3Icon from '../components/icons/Css3.astro';
 import JavaScriptIcon from '../components/icons/JavaScript.astro';
-import LinkedInIcon from '../components/icons/LinkedIn.astro';
-import OperaIcon from '../components/icons/Opera.astro';
-import PhotoshopIcon from '../components/icons/Photoshop.astro';
 import ReactIcon from '../components/icons/React.astro';
-import SassIcon from '../components/icons/Sass.astro';
-import VisualStudioCodeIcon from '../components/icons/VisualStudioCode.astro';
 import NodejsIcon from '../components/icons/Nodejs.astro';
 import VercelIcon from '../components/icons/Vercel.astro';
+import BootstrapIcon from '../components/icons/Bootstrap.astro';
+import SassIcon from '../components/icons/Sass.astro';
+import GitHubIcon from '../components/icons/GitHub.astro';
+import VisualStudioCodeIcon from '../components/icons/VisualStudioCode.astro';
+import PhotoshopIcon from '../components/icons/Photoshop.astro';
 ---
 <Layout 
 	title="Lucas Gorini | Desarrollador Web Full Stack"
@@ -27,47 +21,46 @@ import VercelIcon from '../components/icons/Vercel.astro';
 >
 	<div class="max-w-4xl mx-auto px-4 space-y-28 py-24">
 		
-		<!-- Hero Section -->
 		<section id="sobre-mi" class="flex flex-col items-center justify-center text-center">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+			<h2 class="text-4xl md:text-5xl font-bold mb-4">
 				Lucas Gorini
-			</h1>
-			<p class="text-xl text-indigo-400 font-semibold">
+			</h2>
+			<p class="hero-subtitle text-xl font-semibold">
 				Desarrollador Web Full Stack
 			</p>
-			<p class="mt-6 text-slate-400 max-w-2xl">
+			<p class="hero-text mt-6 max-w-2xl">
 				Convierto ideas en soluciones digitales robustas y escalables. Me especializo en el ecosistema de JavaScript, construyendo interfaces dinámicas y backends eficientes.
 			</p>
 		</section>
 
-		<!-- Experiencia -->
 		<section id="experiencia">
-			<h2 class="text-3xl font-bold text-white mb-10 text-center">Experiencia Profesional</h2>
+			<h2 class="text-3xl font-bold mb-10 text-center">Experiencia Profesional</h2>
 			<div class="max-w-3xl mx-auto">
 				<ExperienceItem
 					date="2022 - 2023"
 					title="Desarrollador Frontend"
-					company="Creative Minds"
-					description="Fui responsable de traducir diseños UI/UX en código de alta calidad, creando interfaces interactivas y responsivas. Lideré la optimización del rendimiento, logrando reducir los tiempos de carga en un 20%."
-				/>
+					company="Creative Minds">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Lideré la maquetación de interfaces de usuario desde diseños en Figma, asegurando una fidelidad visual del 100% y una experiencia de usuario fluida.</li>
+                        <li>Implementé optimizaciones de rendimiento web (WPO) que resultaron en una reducción del 30% en los tiempos de carga (LCP).</li>
+                        <li>Colaboré estrechamente con el equipo de backend para integrar APIs REST, asegurando un flujo de datos eficiente y consistente.</li>
+                    </ul>
+                </ExperienceItem>
 				<ExperienceItem
 					date="2023 - Actualidad"
 					title="Desarrollador Full Stack"
-					company="Tech Solutions Inc."
-					description="Diseño, desarrollo y despliegue de aplicaciones web completas utilizando React, Node.js y bases de datos SQL. Trabajo activamente en equipos ágiles para entregar valor continuo al producto."
-				/>
+					company="Tech Solutions Inc.">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Diseño y desarrollo de la arquitectura completa de aplicaciones web, desde la base de datos hasta el despliegue en producción.</li>
+                        <li>Mantenimiento de sistemas backend robustos con Node.js, gestionando la lógica de negocio y la seguridad de los datos.</li>
+                        <li>Participación activa en el ciclo de vida completo del desarrollo bajo metodologías ágiles (Scrum), contribuyendo en ceremonias de planificación, revisión y retrospectiva.</li>
+                    </ul>
+                </ExperienceItem>
 			</div>
 		</section>
 
-		<!-- Habilidades (Skills) -->
-		<section id="habilidades">
+        <section id="habilidades">
 			<h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
-			<!-- 
-        CLASES NUEVAS:
-        - Hemos reemplazado 'grid' y 'grid-cols-*' por 'flex', 'flex-wrap' y 'justify-center'.
-        - flex-wrap: Permite que los elementos pasen a la siguiente línea.
-        - justify-center: Centra todos los elementos horizontalmente, incluyendo la última fila.
-      -->
 			<div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
 				<SkillBadge name="HTML5" colorClass="text-orange-500"><Html5Icon /></SkillBadge>
 				<SkillBadge name="CSS3" colorClass="text-blue-500"><Css3Icon /></SkillBadge>
@@ -83,9 +76,8 @@ import VercelIcon from '../components/icons/Vercel.astro';
 			</div>
 		</section>
 
-		<!-- Proyectos -->
 		<section id="proyectos">
-			<h2 class="text-3xl font-bold text-white mb-10 text-center">Proyectos Destacados</h2>
+			<h2 class="text-3xl font-bold mb-10 text-center">Proyectos Destacados</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<ProjectCard 
 					title="Gestor de Tareas Interactivo"

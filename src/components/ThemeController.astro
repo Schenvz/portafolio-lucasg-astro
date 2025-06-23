@@ -1,0 +1,96 @@
+---
+---
+<div id="theme-controller" class="fixed bottom-6 right-6 z-50">
+    <div id="theme-menu" class="absolute bottom-full right-0 mb-4 bg-slate-800/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-2xl p-3 hidden">
+        <div class="grid grid-cols-2 gap-3">
+            <button data-theme="pizarra-indigo" class="theme-button w-10 h-10 rounded-full bg-indigo-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Índigo"></button>
+            <button data-theme="pizarra-verde" class="theme-button w-10 h-10 rounded-full bg-emerald-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Verde"></button>
+            <button data-theme="claro-negro" class="theme-button w-10 h-10 rounded-full bg-gray-200 border-2 border-slate-400 hover:border-black focus:border-black transition" aria-label="Tema Claro + Negro"></button>
+            <button data-theme="pizarra-mono" class="theme-button w-10 h-10 rounded-full bg-slate-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra Monocromático"></button>
+        </div>
+    </div>
+
+    <button id="theme-toggle-button" class="bg-slate-800 p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-palette"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0L12 2.69z"></path><path d="M12 22s5-4 5-10H7c0 6 5 10 5 10z"></path></svg>
+    </button>
+</div>
+<script is:inline>
+    // @ts-nocheck
+    document.addEventListener('DOMContentLoaded', () => {
+        const themes = {
+            'pizarra-indigo': {
+                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', accent: 'text-indigo-400', tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300'
+            },
+            'pizarra-verde': {
+                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', accent: 'text-emerald-400', tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300'
+            },
+            'claro-negro': {
+                bg: 'bg-gray-100', card: 'bg-white/80', text: 'text-slate-900', subtext: 'text-slate-600', accent: 'text-slate-900', tagBg: 'bg-gray-200', tagText: 'text-gray-800'
+            },
+            'pizarra-mono': {
+                bg: 'bg-slate-900', card: 'bg-slate-800/80', text: 'text-white', subtext: 'text-slate-300', accent: 'text-slate-300', tagBg: 'bg-slate-700/50', tagText: 'text-slate-300'
+            }
+        };
+
+        function applyTheme(themeKey) {
+            if (!themes[themeKey]) return;
+            const theme = themes[themeKey];
+            const elements = {
+                body: document.body,
+                mainHeader: document.getElementById('main-header'),
+                allTitles: document.querySelectorAll('h1, h2, h3, h4'),
+                subTexts: document.querySelectorAll('.hero-text, .experience-description, .experience-company'),
+                heroSubtitle: document.querySelector('.hero-subtitle'),
+                projectTags: document.querySelectorAll('.project-tag'),
+                socialIcons: document.querySelectorAll('.social-icon'),
+                themeIcon: document.getElementById('theme-icon'),
+                themeToggleButton: document.getElementById('theme-toggle-button')
+            };
+
+            Object.values(themes).forEach(t => {
+                elements.body.classList.remove(t.bg);
+                if (elements.mainHeader) elements.mainHeader.classList.remove(t.bg.card);
+                elements.allTitles.forEach(el => el.classList.remove(t.text));
+                elements.subTexts.forEach(el => el.classList.remove(t.subtext));
+                if (elements.heroSubtitle) elements.heroSubtitle.classList.remove(t.accent);
+                elements.projectTags.forEach(el => el.classList.remove(t.tagBg, t.tagText));
+                elements.socialIcons.forEach(el => el.classList.remove(t.text, t.subtext));
+            });
+
+            elements.body.classList.add(theme.bg);
+            if (elements.mainHeader) elements.mainHeader.classList.add(theme.bg.card);
+            elements.allTitles.forEach(el => el.classList.add(theme.text));
+            elements.subTexts.forEach(el => el.classList.add(theme.subtext));
+            if (elements.heroSubtitle) elements.heroSubtitle.classList.add(theme.accent);
+            elements.projectTags.forEach(el => el.classList.add(theme.tagBg, theme.tagText));
+            
+            if (themeKey === 'claro-negro') {
+                if(elements.themeToggleButton) elements.themeToggleButton.classList.add('bg-white');
+                if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'black');
+                elements.socialIcons.forEach(el => el.classList.add('text-slate-900'));
+            } else {
+                if(elements.themeToggleButton) elements.themeToggleButton.classList.remove('bg-white');
+                if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'white');
+                elements.socialIcons.forEach(el => el.classList.remove('text-slate-900'));
+            }
+
+            localStorage.setItem('portfolio-theme', themeKey);
+        }
+
+        const toggleButton = document.getElementById('theme-toggle-button');
+        const themeMenu = document.getElementById('theme-menu');
+        const themeButtons = document.querySelectorAll('.theme-button');
+        if (toggleButton && themeMenu) {
+            toggleButton.addEventListener('click', (e) => { e.stopPropagation(); themeMenu.classList.toggle('hidden'); });
+        }
+        document.addEventListener('click', () => themeMenu?.classList.add('hidden'));
+        themeButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                applyTheme(e.currentTarget.dataset.theme);
+                themeMenu?.classList.add('hidden');
+            });
+        });
+        applyTheme(localStorage.getItem('portfolio-theme') || 'pizarra-indigo');
+    });
+</script>
