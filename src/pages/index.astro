@@ -15,26 +15,23 @@ import GitHubIcon from '../components/icons/GitHub.astro';
 import VisualStudioCodeIcon from '../components/icons/VisualStudioCode.astro';
 import PhotoshopIcon from '../components/icons/Photoshop.astro';
 ---
-<Layout 
-	title="Lucas Gorini | Desarrollador Web Full Stack"
-	description="Portafolio de Lucas Gorini, un desarrollador web especializado en la creación de aplicaciones modernas, rápidas y accesibles."
->
-	<div class="max-w-4xl mx-auto px-4 space-y-28 py-24">
+<Layout>
+	<div class="max-w-4xl mx-auto px-4 space-y-28 py-24 md:py-32">
 		
 		<section id="sobre-mi" class="flex flex-col items-center justify-center text-center">
-			<h2 class="text-4xl md:text-5xl font-bold mb-4">
+			<h1 class="main-title text-4xl md:text-5xl font-bold mb-4">
 				Lucas Gorini
-			</h2>
-			<p class="hero-subtitle text-xl font-semibold">
+			</h1>
+			<p class="hero-subtitle text-xl font-semibold transition-colors duration-300">
 				Desarrollador Web Full Stack
 			</p>
-			<p class="hero-text mt-6 max-w-2xl">
+			<p class="hero-text mt-6 max-w-2xl transition-colors duration-300">
 				Convierto ideas en soluciones digitales robustas y escalables. Me especializo en el ecosistema de JavaScript, construyendo interfaces dinámicas y backends eficientes.
 			</p>
 		</section>
 
 		<section id="experiencia">
-			<h2 class="text-3xl font-bold mb-10 text-center">Experiencia Profesional</h2>
+			<h2 class="section-title text-3xl font-bold mb-10 text-center">Experiencia Profesional</h2>
 			<div class="max-w-3xl mx-auto">
 				<ExperienceItem
 					date="2022 - 2023"
@@ -60,7 +57,7 @@ import PhotoshopIcon from '../components/icons/Photoshop.astro';
 		</section>
 
         <section id="habilidades">
-			<h2 class="text-3xl font-bold text-white mb-10 text-center">Habilidades Técnicas</h2>
+			<h2 class="section-title text-3xl font-bold mb-10 text-center">Habilidades Técnicas</h2>
 			<div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
 				<SkillBadge name="HTML5" colorClass="text-orange-500"><Html5Icon /></SkillBadge>
 				<SkillBadge name="CSS3" colorClass="text-blue-500"><Css3Icon /></SkillBadge>
@@ -77,13 +74,13 @@ import PhotoshopIcon from '../components/icons/Photoshop.astro';
 		</section>
 
 		<section id="proyectos">
-			<h2 class="text-3xl font-bold mb-10 text-center">Proyectos Destacados</h2>
+			<h2 class="section-title text-3xl font-bold mb-10 text-center">Proyectos Destacados</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<ProjectCard 
 					title="Gestor de Tareas Interactivo"
 					description="Plataforma web para la gestión de proyectos y tareas personales. Permite a los usuarios crear, organizar y dar seguimiento a sus actividades diarias a través de una interfaz limpia y reactiva."
 					tags={['React', 'Firebase', 'Vite', 'Testing Library']}
-					imgSrc="https://placehold.co/600x400/1e293b/94a3b8?text=App+de+Tareas"
+					imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=App+de+Tareas"
 					imgAlt="Imagen de la aplicación de gestión de tareas"
 					githubHref="https://github.com/schenvz"
 					liveHref="https://github.com/schenvz"
@@ -92,7 +89,7 @@ import PhotoshopIcon from '../components/icons/Photoshop.astro';
 					title="Portafolio Personal v2"
 					description="El sitio que estás viendo ahora. Diseñado para ser un reflejo de mis habilidades, centrado en el rendimiento y la estética, utilizando las últimas tecnologías del desarrollo web estático."
 					tags={['Astro', 'Tailwind CSS', 'UI/UX']}
-					imgSrc="https://placehold.co/600x400/1e293b/94a3b8?text=Mi+Portafolio"
+					imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=Mi+Portafolio"
 					imgAlt="Imagen del proyecto de portafolio personal"
 					githubHref="https://github.com/schenvz"
 					liveHref="#"

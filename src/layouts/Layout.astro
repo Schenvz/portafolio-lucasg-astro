@@ -3,12 +3,12 @@ import Header from '../components/Header.astro';
 import ThemeController from '../components/ThemeController.astro';
 
 export interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 }
 
 const { 
-	title = 'Portafolio de Lucas Gorini', 
+	title = 'Lucas Gorini | Desarrollador Web Full Stack', 
 	description = 'El portafolio de un desarrollador web apasionado por la tecnología.' 
 } = Astro.props;
 ---
@@ -26,9 +26,9 @@ const {
 		<main class="relative z-10">
 			<slot />
 		</main>
-		<footer class="text-center py-8 text-sm text-slate-500">
+		<footer class="footer text-center py-8 text-sm transition-colors duration-300">
 			© {new Date().getFullYear()} Lucas Gorini. Todos los derechos reservados.
 		</footer>
-    <ThemeController />
+        <ThemeController />
 	</body>
 </html>
