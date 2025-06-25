@@ -16,7 +16,6 @@ import GitHubIcon from "../components/icons/GitHub.astro";
 import VisualStudioCodeIcon from "../components/icons/VisualStudioCode.astro";
 import PhotoshopIcon from "../components/icons/Photoshop.astro";
 import BotonCvDropdown from "../components/BotonCvDropdown.astro";
-// El import de Analytics no es necesario aquí, ya que está en Layout.astro
 ---
 
 <Layout>
@@ -85,55 +84,4 @@ import BotonCvDropdown from "../components/BotonCvDropdown.astro";
           <SkillBadge name="JavaScript" colorClass="text-yellow-400"><JavaScriptIcon /></SkillBadge>
           <SkillBadge name="React" colorClass="text-sky-400"><ReactIcon /></SkillBadge>
           <SkillBadge name="Node.js" colorClass="text-green-500"><NodejsIcon /></SkillBadge>
-          <SkillBadge name="Vercel" colorClass="text-white"><VercelIcon /></SkillBadge>
-          <SkillBadge name="Bootstrap" colorClass="text-purple-600"><BootstrapIcon /></Badge>
-          <SkillBadge name="Sass" colorClass="text-pink-500"><SassIcon /></SkillBadge>
-          <SkillBadge name="GitHub" colorClass="text-white"><GitHubIcon /></SkillBadge>
-          <SkillBadge name="VS Code" colorClass="text-blue-500"><VisualStudioCodeIcon /></SkillBadge>
-          <SkillBadge name="Photoshop" colorClass="text-blue-800"><PhotoshopIcon /></SkillBadge>
-        </div>
-      </section>
-
-      <section id="proyectos" data-aos="fade-up">
-        <h2 class="section-title text-3xl font-bold mb-10 text-center">
-          Proyectos Destacados
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <ProjectCard
-            title="Gestor de Tareas Interactivo"
-            description="Plataforma web para la gestión de proyectos y tareas personales. Permite a los usuarios crear, organizar y dar seguimiento a sus actividades diarias a través de una interfaz limpia y reactiva."
-            tags={["React", "Firebase", "Vite", "Testing Library"]}
-            imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=App+de+Tareas"
-            imgAlt="Imagen de la aplicación de gestión de tareas"
-            githubHref="https://github.com/schenvz"
-            liveHref="https://github.com/schenvz"
-          />
-          <ProjectCard
-            title="Portafolio Personal v2"
-            description="El sitio que estás viendo ahora. Diseñado para ser un reflejo de mis habilidades, centrado en el rendimiento y la estética, utilizando las últimas tecnologías del desarrollo web estático."
-            tags={["Astro", "Tailwind CSS", "UI/UX"]}
-            imgSrc="https://placehold.co/600x400/0f172a/94a3b8?text=Mi+Portafolio"
-            imgAlt="Imagen del proyecto de portafolio personal"
-            githubHref="https://github.com/schenvz"
-            liveHref="#"
-          />
-        </div>
-      </section>
-      
-      <section id="contacto" class="text-center p-8 md:p-12 rounded-2xl bg-white dark:bg-slate-800/50 shadow-lg dark:border dark:border-white/10" data-aos="fade-up">
-        <h2 class="section-title text-3xl font-bold mb-4">Hablemos</h2>
-        <p class="text-lg max-w-xl mx-auto mb-8">
-          Estoy disponible para nuevas oportunidades y colaboraciones. Si tienes
-          un proyecto en mente o simplemente quieres conectar, no dudes en
-          contactarme.
-        </p>
-        <div class="flex flex-wrap justify-center items-center gap-4">
-          <a href="mailto:lucasgori123@gmail.com" class="cta-button font-bold py-2 px-4 rounded-full inline-flex items-center transition-colors duration-300">
-            Enviar un email
-          </a>
-          <BotonCvDropdown />
-        </div>
-      </section>
-    </div>
-  </div>
-</Layout>
+          <SkillBadge name="Vercel" colorClass="text-black"><VercelIcon /></SkillBadge>
