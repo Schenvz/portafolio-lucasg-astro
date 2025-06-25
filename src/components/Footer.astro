@@ -1,0 +1,35 @@
+---
+// src/components/Footer.astro
+import GitHubSocial from "./icons/GitHubSocial.astro";
+import LinkedInSocial from "./icons/LinkedInSocial.astro";
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer p-8 border-t border-white/10">
+  <div class="max-w-4xl mx-auto flex justify-between items-center">
+    <span class="text-sm">
+      &copy; {currentYear} Lucas Gorini. Todos los derechos reservados.
+    </span>
+
+    <div class="flex gap-4">
+      <a
+        href="https://github.com/schenvz"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub de Lucas Gorini"
+        class="transition hover:scale-125 hover:text-sky-400"
+      >
+        <GitHubSocial />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/lucas-gorini/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn de Lucas Gorini"
+        class="transition hover:scale-125 hover:text-sky-400"
+      >
+        <LinkedInSocial />
+      </a>
+    </div>
+  </div>
+</footer>

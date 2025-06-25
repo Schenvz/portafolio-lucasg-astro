@@ -1,7 +1,3 @@
----
-// src/components/BotonCvDropdown.astro
----
-
 <div class="relative inline-block text-left">
   {/* El botón principal que abre el menú */}
   <button
@@ -34,7 +30,7 @@
     >
       <a
         href="/Lucas_Gorini_Spanish-cv-junio.pdf"
-        download="Lucas_Gorini_Spanish-cv-junio.pdf"
+        download="CV Lucas Gorini (Español).pdf"
         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         role="menuitem"
       >
@@ -42,7 +38,7 @@
       </a>
       <a
         href="/Lucas_Gorini_English-cv-june.pdf"
-        download="Lucas_Gorini_English-cv-june.pdf"
+        download="CV Lucas Gorini (English).pdf"
         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         role="menuitem"
       >
@@ -53,17 +49,14 @@
 </div>
 
 <script>
-  // El script con la corrección aplicada
+  // El script para la funcionalidad del menú desplegable
   const cvButton = document.getElementById("cv-button");
   const cvMenu = document.getElementById("cv-menu");
 
-  // AÑADIMOS ESTA VERIFICACIÓN para eliminar los errores de "posiblemente nulo"
   if (cvButton && cvMenu) {
-    // La lógica original ahora va segura dentro de este bloque
-    
     // Función para mostrar/ocultar el menú
     cvButton.addEventListener("click", (event) => {
-      event.stopPropagation(); // Evita que el clic se propague al documento
+      event.stopPropagation();
       cvMenu.classList.toggle("hidden");
     });
 
