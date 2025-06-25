@@ -99,24 +99,52 @@
                  if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'white');
             }
             localStorage.setItem('portfolio-theme', themeKey);
-        }
+
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(btn => {
+              // Limpia posibles clases previas
+              btn.classList.remove(
+                'bg-sky-500', 'bg-indigo-600', 'bg-pink-600', 'bg-neutral-900', 'bg-emerald-600', 'bg-slate-300',
+                'hover:bg-sky-600', 'hover:bg-indigo-700', 'hover:bg-pink-700', 'hover:bg-neutral-800', 'hover:bg-emerald-700', 'hover:bg-slate-400',
+                'text-white', 'text-slate-900'
+              );
+              // Aplica la clase según el tema
+              if (themeKey === 'pizarra-indigo') {
+                btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
+              } else if (themeKey === 'pizarra-verde') {
+                btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'text-white');
+              } else if (themeKey === 'claro-negro') {
+                btn.classList.add('bg-slate-900', 'hover:bg-slate-800', 'text-white');
+                      } else if (themeKey === 'pizarra-mono') {
+                        btn.classList.add('bg-slate-300', 'hover:bg-slate-400', 'text-slate-900');
+                      }
+                    });
+                }
         
-        const toggleButton = document.getElementById('theme-toggle-button');
-        const themeMenu = document.getElementById('theme-menu');
-        const themeButtons = document.querySelectorAll('.theme-button');
+                // Mostrar/ocultar menú de temas
+                const themeToggleButton = document.getElementById('theme-toggle-button');
+                const themeMenu = document.getElementById('theme-menu');
+                if (themeToggleButton && themeMenu) {
+                    themeToggleButton.addEventListener('click', () => {
+                        themeMenu.classList.toggle('hidden');
+                    });
+                    document.addEventListener('click', (e) => {
+                        if (!themeMenu.contains(e.target) && !themeToggleButton.contains(e.target)) {
+                            themeMenu.classList.add('hidden');
+                        }
+                    });
+                }
         
-        if (toggleButton && themeMenu) {
-            toggleButton.addEventListener('click', (e) => { e.stopPropagation(); themeMenu.classList.toggle('hidden'); });
-        }
-        document.addEventListener('click', () => themeMenu?.classList.add('hidden'));
-        themeButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                applyTheme(e.currentTarget.dataset.theme);
-                themeMenu?.classList.add('hidden');
+                // Cambiar tema al hacer clic en un botón
+                document.querySelectorAll('.theme-button').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const themeKey = btn.getAttribute('data-theme');
+                        applyTheme(themeKey);
+                        themeMenu.classList.add('hidden');
+                    });
+                });
+        
+                // Aplicar tema guardado o por defecto
+                const savedTheme = localStorage.getItem('portfolio-theme') || 'pizarra-indigo';
+                applyTheme(savedTheme);
             });
-        });
-        
-        applyTheme(localStorage.getItem('portfolio-theme') || 'pizarra-indigo');
-    });
-</script>
