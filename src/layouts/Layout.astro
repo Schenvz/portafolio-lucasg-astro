@@ -22,19 +22,17 @@ const {
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{title}</title>
-
-        {/* --- META-ETIQUETAS ACTUALIZADAS --- */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lucasgorini-portafolio.vercel.app/" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content="https://lucasgorini-portafolio.vercel.app/preview.png" />
-
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://lucasgorini-portafolio.vercel.app/" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="https://lucasgorini-portafolio.vercel.app/preview.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     </head>
     <body class="font-sans leading-relaxed transition-colors duration-300">
         <Header />
@@ -44,5 +42,13 @@ const {
         <Footer />
         <ThemeController />
         <Analytics />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script is:inline>
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        </script>
     </body>
 </html>
