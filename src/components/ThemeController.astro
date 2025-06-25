@@ -1,150 +1,115 @@
 ---
+// src/components/ThemeController.astro
 ---
 <div id="theme-controller" class="fixed bottom-6 right-6 z-50">
-    <div id="theme-menu" class="absolute bottom-full right-0 mb-4 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-2xl p-3 hidden">
-        <div class="flex flex-wrap justify-center gap-3 w-24">
-            <button data-theme="pizarra-indigo" class="theme-button w-10 h-10 rounded-full bg-indigo-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Índigo"></button>
-            <button data-theme="pizarra-verde" class="theme-button w-10 h-10 rounded-full bg-emerald-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Verde"></button>
-            <button data-theme="claro-negro" class="theme-button w-10 h-10 rounded-full bg-gray-200 border-2 border-slate-400 hover:border-black focus:border-black transition" aria-label="Tema Claro + Negro"></button>
-            <button data-theme="pizarra-mono" class="theme-button w-10 h-10 rounded-full bg-slate-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra Monocromático"></button>
-        </div>
+  <div id="theme-menu" class="absolute bottom-full right-0 mb-4 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-2xl p-3 hidden">
+    <div class="flex flex-wrap justify-center gap-3 w-24">
+      <button data-theme="pizarra-indigo" class="theme-button w-10 h-10 rounded-full bg-indigo-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Índigo"></button>
+      <button data-theme="pizarra-verde" class="theme-button w-10 h-10 rounded-full bg-emerald-500 border-2 border-transparent hover:border-white focus:border-white transition" aria-label="Tema Pizarra + Verde"></button>
+      <button data-theme="claro-negro" class="theme-button w-10 h-10 rounded-full bg-gray-200 border-2 border-slate-400 hover:border-black focus:border-black transition" aria-label="Tema Claro + Negro"></button>
+      <button data-theme="claro-azul" class="theme-button w-10 h-10 rounded-full bg-sky-500 border-2 border-slate-400 hover:border-black focus:border-black transition" aria-label="Tema Claro + Azul"></button>
     </div>
-    <button id="theme-toggle-button" class="bg-slate-800 p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0L12 2.69z"></path><path d="M12 22s5-4 5-10H7c0 6 5 10 5 10z"></path></svg>
-    </button>
+  </div>
+  <button id="theme-toggle-button" class="bg-slate-800 p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200">
+      <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
 </div>
+
 <script is:inline>
-    // @ts-nocheck
-    document.addEventListener('DOMContentLoaded', () => {
-        const themes = {
-            'pizarra-indigo': {
-                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-indigo-400', hover: 'hover:text-indigo-400',
-                cta: 'bg-indigo-600 text-white', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
-                pill: 'text-white', tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300'
-            },
-            'pizarra-verde': {
-                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-emerald-400', hover: 'hover:text-emerald-400',
-                cta: 'bg-emerald-600 text-white', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
-                pill: 'text-white', tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300'
-            },
-            'claro-negro': {
-                bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600', accent: 'text-slate-900', hover: 'hover:text-slate-600',
-                cta: 'bg-slate-900 text-white', ctaSecondary: 'bg-slate-200 text-slate-800 hover:bg-slate-300',
-                pill: 'text-slate-800', tagBg: 'bg-gray-200', tagText: 'text-gray-800'
-            },
-            'pizarra-mono': {
-                bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300', accent: 'text-slate-300', hover: 'hover:text-white',
-                cta: 'bg-slate-300 text-slate-900', ctaSecondary: 'bg-white/5 text-white hover:bg-white/10',
-                pill: 'text-white', tagBg: 'bg-slate-700/50', tagText: 'text-slate-300'
-            }
-        };
+  // @ts-nocheck
+  document.addEventListener('DOMContentLoaded', () => {
+    // Objeto de temas actualizado con 2 temas oscuros y 2 claros
+    const themes = {
+      'pizarra-indigo': {
+        bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300',
+        cta: 'bg-indigo-600 hover:bg-indigo-700 text-white',
+        tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300'
+      },
+      'pizarra-verde': {
+        bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300',
+        cta: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+        tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300'
+      },
+      'claro-negro': {
+        bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600',
+        cta: 'bg-slate-900 hover:bg-slate-700 text-white',
+        tagBg: 'bg-slate-200', tagText: 'text-slate-800'
+      },
+      // Nuevo tema claro con acento azul
+      'claro-azul': {
+        bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600',
+        cta: 'bg-sky-600 hover:bg-sky-700 text-white',
+        tagBg: 'bg-sky-100', tagText: 'text-sky-800'
+      }
+    };
 
-        function applyTheme(themeKey) {
-            if (!themes[themeKey]) themeKey = 'pizarra-indigo';
-            const theme = themes[themeKey];
-            const elements = {
-                body: document.body,
-                mainHeader: document.getElementById('main-header'),
-                allTitles: document.querySelectorAll('.main-title, .section-title, .item-title, .header-name, .nav-link'),
-                subTexts: document.querySelectorAll('.hero-text, .experience-description, .experience-company, .card-description, .footer'),
-                heroSubtitle: document.querySelector('.hero-subtitle'),
-                projectTags: document.querySelectorAll('.project-tag'),
-                dateTags: document.querySelectorAll('.experience-date'),
-                socialPills: document.querySelectorAll('.social-pill'),
-                ctaButton: document.querySelector('.cta-button'),
-                secondaryCtaButton: document.querySelector('.secondary-cta-button'),
-                themeIcon: document.getElementById('theme-icon'),
-                themeToggleButton: document.getElementById('theme-toggle-button')
-            };
+    function applyTheme(themeKey) {
+      if (!themes[themeKey]) themeKey = 'pizarra-indigo';
+      const theme = themes[themeKey];
 
-            Object.values(themes).forEach(t => {
-                elements.body.classList.remove(t.bg);
-                elements.allTitles.forEach(el => el.classList.remove(t.text));
-                elements.subTexts.forEach(el => el.classList.remove(t.subtext));
-                if (elements.heroSubtitle) elements.heroSubtitle.classList.remove(t.accent);
-                elements.projectTags.forEach(el => el.classList.remove(t.tagBg, t.tagText));
-                elements.dateTags.forEach(el => el.classList.remove(t.tagBg, t.tagText));
-                if (elements.ctaButton) {
-                    const ctaClasses = t.cta.split(' ');
-                    elements.ctaButton.classList.remove(...ctaClasses);
-                }
-                 if (elements.secondaryCtaButton) {
-                    const secondaryCtaClasses = t.ctaSecondary.split(' ');
-                    elements.secondaryCtaButton.classList.remove(...secondaryCtaClasses);
-                }
-                elements.socialPills.forEach(el => el.classList.remove(t.pill));
-            });
+      // Limpiar clases viejas
+      Object.values(themes).forEach(t => {
+        document.body.classList.remove(t.bg, t.text, t.subtext);
+        document.querySelectorAll('.cta-button').forEach(btn => btn.classList.remove(...t.cta.split(' ')));
+        document.querySelectorAll('.project-tag').forEach(tag => tag.classList.remove(t.tagBg, t.tagText));
+      });
 
-            elements.body.classList.add(theme.bg);
-            elements.allTitles.forEach(el => el.classList.add(theme.text));
-            elements.subTexts.forEach(el => el.classList.add(theme.subtext));
-            if (elements.heroSubtitle) elements.heroSubtitle.classList.add(theme.accent);
-            elements.projectTags.forEach(el => el.classList.add(theme.tagBg, theme.tagText));
-            elements.dateTags.forEach(el => el.classList.add(theme.tagBg, theme.tagText));
-            if (elements.ctaButton) {
-                const ctaClasses = theme.cta.split(' ');
-                elements.ctaButton.classList.add(...ctaClasses);
-            }
-            if (elements.secondaryCtaButton) {
-                const secondaryCtaClasses = theme.ctaSecondary.split(' ');
-                elements.secondaryCtaButton.classList.add(...secondaryCtaClasses);
-            }
-            elements.socialPills.forEach(el => el.classList.add(theme.pill));
-            
-            if (themeKey === 'claro-negro') {
-                if(elements.themeToggleButton) elements.themeToggleButton.classList.add('bg-white');
-                if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'black');
-            } else {
-                 if(elements.themeToggleButton) elements.themeToggleButton.classList.remove('bg-white');
-                 if(elements.themeIcon) elements.themeIcon.setAttribute('stroke', 'white');
-            }
-            localStorage.setItem('portfolio-theme', themeKey);
-
-            const ctaButtons = document.querySelectorAll('.cta-button');
-            ctaButtons.forEach(btn => {
-              // Limpia posibles clases previas
-              btn.classList.remove(
-                'bg-sky-500', 'bg-indigo-600', 'bg-pink-600', 'bg-neutral-900', 'bg-emerald-600', 'bg-slate-300',
-                'hover:bg-sky-600', 'hover:bg-indigo-700', 'hover:bg-pink-700', 'hover:bg-neutral-800', 'hover:bg-emerald-700', 'hover:bg-slate-400',
-                'text-white', 'text-slate-900'
-              );
-              // Aplica la clase según el tema
-              if (themeKey === 'pizarra-indigo') {
-                btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'text-white');
-              } else if (themeKey === 'pizarra-verde') {
-                btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'text-white');
-              } else if (themeKey === 'claro-negro') {
-                btn.classList.add('bg-slate-900', 'hover:bg-slate-800', 'text-white');
-                      } else if (themeKey === 'pizarra-mono') {
-                        btn.classList.add('bg-slate-300', 'hover:bg-slate-400', 'text-slate-900');
-                      }
-                    });
-                }
-        
-                // Mostrar/ocultar menú de temas
-                const themeToggleButton = document.getElementById('theme-toggle-button');
-                const themeMenu = document.getElementById('theme-menu');
-                if (themeToggleButton && themeMenu) {
-                    themeToggleButton.addEventListener('click', () => {
-                        themeMenu.classList.toggle('hidden');
-                    });
-                    document.addEventListener('click', (e) => {
-                        if (!themeMenu.contains(e.target) && !themeToggleButton.contains(e.target)) {
-                            themeMenu.classList.add('hidden');
-                        }
-                    });
-                }
-        
-                // Cambiar tema al hacer clic en un botón
-                document.querySelectorAll('.theme-button').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const themeKey = btn.getAttribute('data-theme');
-                        applyTheme(themeKey);
-                        themeMenu.classList.add('hidden');
-                    });
-                });
-        
-                // Aplicar tema guardado o por defecto
-                const savedTheme = localStorage.getItem('portfolio-theme') || 'pizarra-indigo';
-                applyTheme(savedTheme);
-            });
+      // Aplicar nuevas clases
+      document.body.classList.add(theme.bg, theme.text);
+      document.querySelectorAll('.hero-text, .experience-description, .experience-company, .card-description, .footer').forEach(el => el.classList.add(theme.subtext));
+      document.querySelectorAll('.cta-button').forEach(btn => btn.classList.add(...theme.cta.split(' ')));
+      document.querySelectorAll('.project-tag').forEach(tag => tag.classList.add(theme.tagBg, theme.tagText));
+      
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+      const toggleButton = document.getElementById('theme-toggle-button');
+      
+      // LÓGICA DEL ÍCONO ACTUALIZADA para que funcione con AMBOS temas claros
+      if (themeKey === 'claro-negro' || themeKey === 'claro-azul') {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+        toggleButton?.classList.remove('text-white');
+        toggleButton?.classList.add('text-black', 'bg-white');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+        toggleButton?.classList.remove('text-black', 'bg-white');
+        toggleButton?.classList.add('text-white');
+      }
+      
+      localStorage.setItem('portfolio-theme', themeKey);
+      document.querySelectorAll('button[data-theme]').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-white');
+        if (btn.getAttribute('data-theme') === themeKey) {
+          btn.classList.add('ring-2', 'ring-white');
+        }
+      });
+    }
+    
+    // Lógica de interacción (no cambia)
+    const themeToggleButton = document.getElementById('theme-toggle-button');
+    const themeMenu = document.getElementById('theme-menu');
+    const themeButtons = document.querySelectorAll('button[data-theme]');
+    if (themeToggleButton && themeMenu) {
+      themeToggleButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        themeMenu.classList.toggle('hidden');
+      });
+    }
+    themeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const themeKey = button.getAttribute('data-theme');
+        applyTheme(themeKey);
+        themeMenu?.classList.add('hidden');
+      });
+    });
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'pizarra-indigo';
+    applyTheme(savedTheme);
+    document.addEventListener('click', () => {
+      if (!themeMenu?.classList.contains('hidden')) {
+        themeMenu?.classList.add('hidden');
+      }
+    });
+  });
+</script>
