@@ -34,8 +34,10 @@ const {
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="https://lucasgorini-portafolio.vercel.app/preview.png" />
         
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
         <style is:global>
-          body {
+          html, body {
             overflow-x: hidden;
           }
         </style>
@@ -49,6 +51,12 @@ const {
         <ThemeController />
         <Analytics />
 
-        <script src="../scripts/main.ts"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script is:inline>
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        </script>
     </body>
 </html>
