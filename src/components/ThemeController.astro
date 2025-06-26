@@ -19,7 +19,6 @@
 <script is:inline>
   // @ts-nocheck
   document.addEventListener('DOMContentLoaded', () => {
-    // Objeto de temas actualizado con 2 temas oscuros y 2 claros
     const themes = {
       'pizarra-indigo': {
         bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300',
@@ -36,7 +35,6 @@
         cta: 'bg-slate-900 hover:bg-slate-700 text-white',
         tagBg: 'bg-slate-200', tagText: 'text-slate-800'
       },
-      // Nuevo tema claro con acento azul
       'claro-azul': {
         bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600',
         cta: 'bg-sky-600 hover:bg-sky-700 text-white',
@@ -65,7 +63,6 @@
       const moonIcon = document.getElementById('theme-icon-moon');
       const toggleButton = document.getElementById('theme-toggle-button');
       
-      // LÓGICA DEL ÍCONO ACTUALIZADA para que funcione con AMBOS temas claros
       if (themeKey === 'claro-negro' || themeKey === 'claro-azul') {
         sunIcon?.classList.remove('hidden');
         moonIcon?.classList.add('hidden');

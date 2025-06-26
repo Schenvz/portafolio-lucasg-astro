@@ -6,30 +6,37 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer p-8 border-t border-white/10">
-  <div class="max-w-4xl mx-auto flex justify-between items-center">
-    <span class="text-sm">
-      &copy; {currentYear} Lucas Gorini. Todos los derechos reservados.
-    </span>
-
-    <div class="flex gap-4">
-      <a
-        href="https://github.com/schenvz"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub de Lucas Gorini"
-        class="transition hover:scale-125 hover:text-sky-400"
-      >
-        <GitHubSocial />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/lucas-gorini/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn de Lucas Gorini"
-        class="transition hover:scale-125 hover:text-sky-400"
-      >
-        <LinkedInSocial />
-      </a>
+  <div class="max-w-4xl mx-auto flex flex-col items-center gap-6">
+    
+    <div class="w-full flex justify-between items-center">
+      <span class="text-sm">
+        &copy; {currentYear} Lucas Gorini. Todos los derechos reservados.
+      </span>
+      <div class="flex gap-4">
+        <a
+          href="https://github.com/schenvz"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub de Lucas Gorini"
+          class="transition hover:scale-125 hover:text-sky-400"
+        >
+          <GitHubSocial />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/lucas-gorini-187515239/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn de Lucas Gorini"
+          class="transition hover:scale-125 hover:text-sky-400"
+        >
+          <LinkedInSocial />
+        </a>
+      </div>
     </div>
+
+    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+      Este portafolio es un trabajo en progreso (Fase 1). El contenido y el diseño están sujetos a cambios.
+    </p>
+
   </div>
 </footer>
