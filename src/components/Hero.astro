@@ -1,15 +1,15 @@
 ---
+// src/components/Hero.astro
 import SocialPill from "../components/SocialPill.astro";
-import GitHubIcon from "../components/icons/GitHub.astro";
-import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import GitHubIcon from "../components/icons/GitHubSocial.astro"; 
+import LinkedInIcon from "../components/icons/LinkedInSocial.astro";
 ---
 
 <section class="w-full lg:w-[740px] mx-auto py-20 md:py-36">
   <div class="grid md:grid-cols-2 gap-8 items-center">
-    <!-- Columna Izquierda: Avatar y Redes -->
-    <div
-      class="flex flex-col items-center text-center"
-    >
+    
+    <div class="flex flex-col items-center text-center">
+      {/* HEMOS CAMBIADO EL 'src' DE LA IMAGEN AQUÍ ABAJO */}
       <img
         class="rounded-full w-32 h-32 mb-4"
         src="https://placehold.co/128x128/a3a3a3/333?text=LG"
@@ -20,38 +20,29 @@ import LinkedInIcon from "../components/icons/LinkedIn.astro";
           <GitHubIcon class="w-6 h-6" />
           GitHub
         </SocialPill>
-        <SocialPill href="https://linkedin.com/in/lucas-gorini">
+        <SocialPill href="https://www.linkedin.com/in/lucas-gorini-187515239/">
           <LinkedInIcon class="w-6 h-6" />
           LinkedIn
         </SocialPill>
       </div>
     </div>
-    <!-- Columna Derecha: Texto y Botones -->
-    <div
-      class="flex flex-col items-center md:items-start text-center md:text-left"
-    >
+
+    <div class="flex flex-col items-center md:items-start text-center md:text-left">
       <h1 class="main-title text-4xl md:text-5xl font-bold">Lucas Gorini</h1>
-      <p
-        class="hero-subtitle text-xl font-semibold mt-2 transition-colors duration-300"
-      >
-        Desarrollador Web Full Stack
+      
+      <p class="hero-subtitle text-xl font-semibold mt-2 transition-colors duration-300">
+        Desarrollador Frontend
       </p>
       <p class="hero-text mt-4 transition-colors duration-300">
-        Transformo ideas en productos digitales de alto impacto. Me especializo
-        en el ecosistema JavaScript, creando soluciones eficientes, escalables y
-        centradas en la experiencia del usuario.
+        Con un fuerte enfoque en crear experiencias de usuario excepcionales a través de un código limpio y reactivo, y con una sólida comprensión de las tecnologías backend que le dan vida a cada proyecto.
       </p>
       <p class="hero-text mt-4 transition-colors duration-300">
-        Con más de tres años de experiencia en desarrollo web y cinco en
-        administración de bases de datos, combino lógica, diseño y performance
-        para construir aplicaciones sólidas, modernas y fáciles de mantener.
+        Actualmente iniciando mi formación como Desarrollador Full Stack para complementar mis conocimientos y construir aplicaciones web de punta a punta.
       </p>
       <p class="hero-text mt-4 transition-colors duration-300">
-        Trabajo con tecnologías como React, Node.js, Express, MongoDB, Astro,
-        entre otras. Siempre busco superarme, aprender algo nuevo y sumar
-        valor real en cada proyecto. Si tenés una idea, una necesidad o
-        simplemente querés charlar de tech, estoy a un clic de distancia.
+        Si tenés una idea, una necesidad o simplemente querés charlar de tech, estoy a un clic de distancia.
       </p>
+
       <div class="flex flex-col items-center text-center mt-8 col-span-2">
         <a
           href="#contacto"
