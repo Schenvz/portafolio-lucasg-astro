@@ -1,21 +1,24 @@
 ---
+// src/components/Header.astro
+
+// I keep the list of navigation links here.
 const navLinks = [
   { href: "#experiencia", text: "Experiencia" },
-  { href: "#habilidades", text: "Habilidades" }, // <-- AÑADIMOS ESTA LÍNEA
+  { href: "#habilidades", text: "Habilidades" },
   { href: "#proyectos", text: "Proyectos" },
   { href: "#contacto", text: "Contacto" },
 ];
 ---
-
 <header
   id="main-header"
-  class="fixed top-0 z-50 w-full flex justify-center items-center py-4 px-6 backdrop-blur-sm transition-colors duration-300"
+  class="fixed top-0 z-40 w-full flex justify-center items-center py-4 px-6 backdrop-blur-sm transition-colors duration-300"
 >
-  <nav class="flex justify-between items-center w-full max-w-5xl">
-    <a href="/" class="header-name text-lg font-bold transition-colors"
-      >Lucas Gorini</a
-    >
+  <nav class="flex justify-between items-center w-full max-w-4xl">
+    <a href="/" class="header-name text-lg font-bold transition-colors">
+      Lucas Gorini
+    </a>
 
+    <!-- Desktop Navigation (hidden on mobile with 'hidden md:flex') -->
     <div class="hidden md:flex items-center gap-6">
       {
         navLinks.map((link) => (
@@ -30,3 +33,7 @@ const navLinks = [
     </div>
   </nav>
 </header>
+
+<!-- 
+  All mobile menu elements (button, panel, and script) have been removed.
+-->
