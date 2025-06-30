@@ -10,7 +10,7 @@
       <button data-theme="claro-azul" class="theme-button w-10 h-10 rounded-full bg-sky-500 border-2 border-slate-400 hover:border-black focus:border-black transition" aria-label="Tema Claro + Azul"></button>
     </div>
   </div>
-  <button id="theme-toggle-button" class="bg-slate-800 p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200">
+  <button id="theme-toggle-button" class="p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200">
       <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
   </button>
@@ -23,90 +23,98 @@
       'pizarra-indigo': {
         bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300',
         cta: 'bg-indigo-600 hover:bg-indigo-700 text-white',
+        ctaSecondary: 'bg-white/10 hover:bg-white/20 text-white',
         tagBg: 'bg-indigo-900/50', tagText: 'text-indigo-300'
       },
       'pizarra-verde': {
         bg: 'bg-slate-900', text: 'text-white', subtext: 'text-slate-300',
         cta: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+        ctaSecondary: 'bg-white/10 hover:bg-white/20 text-white',
         tagBg: 'bg-emerald-900/50', tagText: 'text-emerald-300'
       },
       'claro-negro': {
         bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600',
         cta: 'bg-slate-900 hover:bg-slate-700 text-white',
+        ctaSecondary: 'bg-slate-200 hover:bg-slate-300 text-slate-800',
         tagBg: 'bg-slate-200', tagText: 'text-slate-800'
       },
       'claro-azul': {
         bg: 'bg-gray-100', text: 'text-slate-900', subtext: 'text-slate-600',
         cta: 'bg-sky-600 hover:bg-sky-700 text-white',
+        ctaSecondary: 'bg-slate-200 hover:bg-slate-300 text-slate-800',
         tagBg: 'bg-sky-100', tagText: 'text-sky-800'
       }
     };
 
+    const themeToggleButton = document.getElementById('theme-toggle-button');
+    const themeMenu = document.getElementById('theme-menu');
+    const themeButtons = document.querySelectorAll('button[data-theme]');
+
     function applyTheme(themeKey) {
       if (!themes[themeKey]) themeKey = 'pizarra-indigo';
       const theme = themes[themeKey];
-
-      // Limpiar clases viejas
+      
+      // 1. Clean all theme classes
       Object.values(themes).forEach(t => {
         document.body.classList.remove(t.bg, t.text, t.subtext);
         document.querySelectorAll('.cta-button').forEach(btn => btn.classList.remove(...t.cta.split(' ')));
+        document.querySelectorAll('.secondary-cta-button').forEach(btn => btn.classList.remove(...t.ctaSecondary.split(' ')));
         document.querySelectorAll('.project-tag').forEach(tag => tag.classList.remove(t.tagBg, t.tagText));
       });
 
-      // Aplicar nuevas clases
+      // 2. Apply new classes
       document.body.classList.add(theme.bg, theme.text);
       document.querySelectorAll('.hero-text, .experience-description, .experience-company, .card-description, .footer').forEach(el => el.classList.add(theme.subtext));
       document.querySelectorAll('.cta-button').forEach(btn => btn.classList.add(...theme.cta.split(' ')));
+      document.querySelectorAll('.secondary-cta-button').forEach(btn => btn.classList.add(...theme.ctaSecondary.split(' ')));
       document.querySelectorAll('.project-tag').forEach(tag => tag.classList.add(theme.tagBg, theme.tagText));
       
       const sunIcon = document.getElementById('theme-icon-sun');
       const moonIcon = document.getElementById('theme-icon-moon');
-      const toggleButton = document.getElementById('theme-toggle-button');
       
-      if (themeKey === 'claro-negro' || themeKey === 'claro-azul') {
+      if (themeKey.startsWith('claro')) {
         sunIcon?.classList.remove('hidden');
         moonIcon?.classList.add('hidden');
-        toggleButton?.classList.remove('text-white');
-        toggleButton?.classList.add('text-black', 'bg-white');
+        themeToggleButton?.classList.add('bg-white', 'text-black');
+        themeToggleButton?.classList.remove('bg-slate-800', 'text-white');
       } else {
         sunIcon?.classList.add('hidden');
         moonIcon?.classList.remove('hidden');
-        toggleButton?.classList.remove('text-black', 'bg-white');
-        toggleButton?.classList.add('text-white');
+        themeToggleButton?.classList.add('bg-slate-800', 'text-white');
+        themeToggleButton?.classList.remove('bg-white', 'text-black');
       }
       
       localStorage.setItem('portfolio-theme', themeKey);
-      document.querySelectorAll('button[data-theme]').forEach(btn => {
+      themeButtons.forEach(btn => {
         btn.classList.remove('ring-2', 'ring-white');
         if (btn.getAttribute('data-theme') === themeKey) {
           btn.classList.add('ring-2', 'ring-white');
         }
       });
     }
-    
-    // Lógica de interacción (no cambia)
-    const themeToggleButton = document.getElementById('theme-toggle-button');
-    const themeMenu = document.getElementById('theme-menu');
-    const themeButtons = document.querySelectorAll('button[data-theme]');
+
     if (themeToggleButton && themeMenu) {
-      themeToggleButton.addEventListener('click', (event) => {
-        event.stopPropagation();
-        themeMenu.classList.toggle('hidden');
-      });
+        themeToggleButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            themeMenu.classList.toggle('hidden');
+        });
     }
+    
     themeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const themeKey = button.getAttribute('data-theme');
-        applyTheme(themeKey);
-        themeMenu?.classList.add('hidden');
-      });
+        button.addEventListener('click', () => {
+            const themeKey = button.getAttribute('data-theme');
+            applyTheme(themeKey);
+            themeMenu?.classList.add('hidden');
+        });
     });
+
     const savedTheme = localStorage.getItem('portfolio-theme') || 'pizarra-indigo';
     applyTheme(savedTheme);
-    document.addEventListener('click', () => {
-      if (!themeMenu?.classList.contains('hidden')) {
-        themeMenu?.classList.add('hidden');
-      }
+
+    document.addEventListener('click', (event) => {
+        if (!themeMenu?.contains(event.target) && !themeToggleButton?.contains(event.target)) {
+            themeMenu?.classList.add('hidden');
+        }
     });
   });
 </script>
