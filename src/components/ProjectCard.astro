@@ -11,15 +11,22 @@ export interface Props {
 const { title, description, tags, imgSrc, imgAlt, githubHref, liveHref } = Astro.props;
 ---
 
+<!-- 
+  I've added the 'group' class back so the image zoom on hover works correctly.
+-->
 <article 
-  class="bg-white dark:bg-slate-800/50 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+  class="group bg-white dark:bg-slate-800/50 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-2xl"
 >
     <div class="overflow-hidden">
         <img src={imgSrc} alt={imgAlt} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
     </div>
     <div class="p-6 flex-grow flex flex-col">
+        <!-- 
+          The title no longer changes color on hover, as you requested.
+        -->
         <h3 class="item-title text-xl font-bold mb-2">{title}</h3>
-        <p class="text-sm flex-grow">{description}</p>
+        
+        <p class="card-description text-sm flex-grow">{description}</p>
         <div class="mt-4 flex flex-wrap gap-2">
             {tags.map((tag) => (
                 <span class="project-tag text-xs font-medium px-2.5 py-0.5 rounded-full transition-colors duration-300">

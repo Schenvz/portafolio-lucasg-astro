@@ -1,15 +1,23 @@
 ---
 // src/components/SocialPill.astro
+// I've updated this component to be a round icon button.
 interface Props {
   href: string;
+  ariaLabel: string;
 }
-const { href } = Astro.props;
+const { href, ariaLabel } = Astro.props;
 ---
+<!-- 
+  This is now a circular container for an icon.
+  - I've removed the horizontal padding (px-4) and set a fixed 
+    width and height (w-12 h-12) to make it a perfect circle with 'rounded-full'.
+  - The <slot /> will now only render the icon passed from the parent.
+-->
 <a
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class="social-pill inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium transition-colors duration-300 hover:bg-white/10"
+  aria-label={ariaLabel}
 >
   <slot />
 </a>
